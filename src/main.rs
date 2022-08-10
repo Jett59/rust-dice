@@ -2,6 +2,7 @@ use rand::Rng;
 use tts::Tts;
 
 fn say(text: &str, tts: &mut Tts) {
+    tts.stop();
     tts.speak(text, true).expect("Failed to speak");
 }
 
@@ -13,6 +14,7 @@ fn main() {
             let mut input = String::new();
             std::io::stdin().read_line(&mut input).expect("Failed to read input");
             let number = rng.gen_range(1..=6);
+            println!("{}", number);
             say(&format!("{}", number), &mut tts);
         }
 }
